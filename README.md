@@ -33,7 +33,7 @@ A demo project for Avalonia UI showing how to implement **tear-off tabs** — ta
 ### Run
 
 ```bash
-git clone Add link here
+git clone https://github.com/Vanilla76e2/Avalonia-Tears-Off-Tabs
 cd TearOffTabs
 dotnet run --project TearOffTabs
 ```

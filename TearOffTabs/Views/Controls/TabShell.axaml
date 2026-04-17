@@ -1,0 +1,90 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:TearOffTabs.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TearOffTabs.Views.Controls.TabShell"
+             x:DataType="vm:TabShellViewModel">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Tab Strip -->
+        <Border Grid.Row="0"
+                Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
+                BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="0 0 0 1"
+                MinHeight="36">
+            <Panel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled">
+                    <ItemsControl x:Name="TabStrip"
+                                  ItemsSource="{Binding Tabs}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="vm:TabItemViewModel">
+                                <!-- Каждый таб-заголовок -->
+                                <Border x:Name="TabHeader"
+                                        MinWidth="120"
+                                        MaxWidth="220"
+                                        Height="36"
+                                        Padding="12 0 4 0"
+                                        Cursor="Hand"
+                                        Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
+                                        BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                                        BorderThickness="0 0 1 0"
+                                        Classes.selected="{Binding IsSelected}">
+                                    <Border.Styles>
+                                        <Style Selector="Border.selected">
+                                            <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}"/>
+                                            <Setter Property="BorderThickness" Value="0 2 1 0"/>
+                                            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}"/>
+                                        </Style>
+                                    </Border.Styles>
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding Title}"
+                                                   VerticalAlignment="Center"
+                                                   TextTrimming="CharacterEllipsis"/>
+                                        <Button Grid.Column="1"
+                                                Command="{Binding CloseCommand}"
+                                                Width="20" Height="20"
+                                                Padding="0"
+                                                VerticalAlignment="Center"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Content="✕"
+                                                FontSize="10"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Индикатор вставки — Canvas поверх TabStrip, IsHitTestVisible=False -->
+                <Canvas x:Name="IndicatorCanvas"
+                        IsHitTestVisible="False"
+                        IsVisible="False">
+                    <Rectangle x:Name="InsertIndicator"
+                               Width="3"
+                               Fill="#0078D4"
+                               IsHitTestVisible="False"/>
+                </Canvas>
+            </Panel>
+        </Border>
+
+        <!-- Content Area -->
+        <Border Grid.Row="1"
+                Background="{DynamicResource SystemControlBackgroundAltHighBrush}">
+            <ContentControl Content="{Binding SelectedTab.Content}"/>
+        </Border>
+
+    </Grid>
+</UserControl>

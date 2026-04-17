@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:TearOffTabs.ViewModels.Pages"
+             x:Class="TearOffTabs.Views.Pages.SettingsPageView"
+             x:DataType="vm:SettingsPageViewModel">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="16">
+            <TextBlock Text="⚙️" FontSize="48" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Message}"
+                       FontSize="16"
+                       HorizontalAlignment="Center"
+                       TextWrapping="Wrap"
+                       MaxWidth="400"
+                       TextAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

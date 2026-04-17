@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TearOffTabs.Views.Controls.GhostWindow"
+        SystemDecorations="None"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        IsHitTestVisible="False"
+        CanResize="False"
+        ShowInTaskbar="False"
+        Width="160"
+        Height="36"
+        Opacity="0.75"
+        Topmost="True">
+
+    <Border x:Name="GhostBorder"
+            CornerRadius="6"
+            Padding="12 0 12 0"
+            Height="36"
+            Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+            BorderBrush="{DynamicResource SystemAccentColor}"
+            BorderThickness="2"
+            BoxShadow="0 4 16 0 #66000000">
+        <TextBlock x:Name="TitleText"
+                   VerticalAlignment="Center"
+                   TextTrimming="CharacterEllipsis"
+                   FontWeight="SemiBold"/>
+    </Border>
+
+</Window>

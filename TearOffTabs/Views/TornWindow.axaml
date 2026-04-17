@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TearOffTabs.ViewModels"
+        xmlns:controls="using:TearOffTabs.Views.Controls"
+        x:Class="TearOffTabs.Views.TornWindow"
+        x:DataType="vm:TabShellViewModel"
+        Width="800" Height="600"
+        MinWidth="400" MinHeight="300"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TearOffTabs">
+
+    <!-- Окно без лишних элементов — только TabShell -->
+    <controls:TabShell DataContext="{Binding}"/>
+
+</Window>

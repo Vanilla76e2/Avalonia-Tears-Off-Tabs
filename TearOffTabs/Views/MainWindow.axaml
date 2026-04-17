@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TearOffTabs.ViewModels"
+        xmlns:controls="using:TearOffTabs.Views.Controls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
+        x:Class="TearOffTabs.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Width="1000" Height="600"
+        MinWidth="600" MinHeight="400"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TearOffTabs — Drag tabs out to create new windows">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*">
+        
+        <!-- Toolbar -->
+        <Border Grid.Row="0"
+                Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
+                BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="0 0 0 1"
+                Padding="12 8">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <TextBlock Text="TearOffTabs Demo"
+                           FontWeight="Bold"
+                           FontSize="16"
+                           VerticalAlignment="Center"/>
+                <Button Content="+ Add Tab"
+                        Command="{Binding AddNewTabCommand}"
+                        Padding="12 6"/>
+                <TextBlock Text="← Drag tabs down to tear them off into separate windows"
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                           FontSize="12"
+                           Margin="20 0 0 0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- TabShell -->
+        <controls:TabShell Grid.Row="1"
+                           DataContext="{Binding TabShell}"/>
+
+    </Grid>
+
+</Window>

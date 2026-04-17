@@ -1,0 +1,41 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET
+*.dll
+*.exe
+!TearOffTabs/Assets/**
+*.pdb
+*.cache
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Kiro
+.kiro/
